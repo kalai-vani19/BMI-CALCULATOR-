@@ -1,0 +1,193 @@
+#LOGIN
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+      text-align: center;
+      width: 300px;
+    }
+    form { display: flex; flex-direction: column; }
+    label { margin-top: 1rem; font-size: 1rem; }
+    input {
+      margin-top: 0.5rem;
+      padding: 0.8rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      background: rgba(255, 255, 255, 0.8);
+      color: #333;
+    }
+    button {
+      margin-top: 1.5rem;
+      padding: 0.8rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      background: #2575fc;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover { background: #6a11cb; }
+    .forgot-password {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #fff;
+      text-decoration: none;
+    }
+    .forgot-password:hover { color: #ffcc00; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Login</h1>
+    <form id="loginForm" action="home.html" method="GET">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" placeholder
+
+      #BODY
+
+        </div>
+
+  <div class="section" id="about">
+    <h2>About Us</h2>
+    <p>Health Tracker is dedicated to helping individuals monitor their health, stay fit, and achieve a balanced lifestyle. We believe that health is wealth, and our tools are designed to make your journey simple and effective.</p>
+  </div>
+
+  <div class="section" id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: kalai@gmail.com</p>
+    <p>Phone: 9876543210</p>
+    <p>Address: Chennai-69</p>
+  </div>
+
+  <footer>
+    <p>© 2025 Health Tracker. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('personal-details-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const fullName = document.getElementById('full-name').value;
+      const email = document.getElementById('email').value;
+      const ageGroup = document.getElementById('age-group').value;
+
+      const message = document.getElementById('form-message');
+      if (fullName && email && ageGroup) {
+        message.textContent = `Thank you, ${fullName}, for providing your details!`;
+        message.style.color = "green";
+      } else {
+        message.textContent = "Please fill in all fields.";
+        message.style.color = "red";
+      }
+    });
+  </script>
+</body>
+</html>
+
+#BMI
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Calculator</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+      text-align: center;
+      width: 350px;
+    }
+    input, button {
+      width: 100%;
+      padding: 0.8rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      margin: 0.5rem 0;
+      outline: none;
+    }
+    button {
+      background: #2575fc;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover { background: #6a11cb; }
+    #result { margin-top: 1rem; font-size: 1.2rem; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>BMI Calculator</h1>
+    <div class="input-container">
+      <label for="height">Height (cm):</label>
+      <input type="number" id="height" placeholder="Enter height">
+    </div>
+    <div class="input-container">
+      <label for="weight">Weight (kg):</label>
+      <input type="number" id="weight" placeholder="Enter weight">
+    </div>
+    <button onclick="calculateBMI()">Calculate BMI</button>
+    <div id="result"></div>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const username = params.get('username');
+    if (username) {
+      const container = document.querySelector('.container');
+      const welcomeMessage = document.createElement('p');
+      welcomeMessage.textContent = `Welcome, ${username}!`;
+      container.insertBefore(welcomeMessage, container.firstChild);
+    }
+    function calculateBMI() {
+      const height = parseFloat(document.getElementById('height').value) / 100;
+      const weight = parseFloat(document.getElementById('weight').value);
+      if (height > 0 && weight > 0) {
+        const bmi = (weight / (height * height)).toFixed(2);
+        let category = bmi < 18.5 ? "Underweight" : bmi < 24.9 ? "Normal weight" : bmi < 29.9 ? "Overweight" : "Obese";
+        document.getElementById('result').textContent = `Your BMI is ${bmi} (${category}).`;
+      } else {
+        document.getElementById('result').textContent = "Please enter valid height and weight.";
+      }
+    }
+  </script>
+</body>
+</html>
